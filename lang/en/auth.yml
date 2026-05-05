@@ -5,13 +5,16 @@ ecust:
   login: Login with ECUST Unified Authentication
   back: Login with :identification
   message: Please log in with your ECUST unified identity account
-  username: Student/Employee ID/Email
-  password: Unified ID Password / Email Password
-  password_hint: Use unified ID password for Official/Eduroam, email password or auth code for Email Login
+  username_official: Student/Employee ID
+  username_smtp: Email
+  password_official: Unified ID Password
+  password_smtp: Email Password / Auth Code
+  password_hint_official: Enter your school unified identity password
+  password_hint_smtp: Enter your email password, or authorization code if set
   method: Authentication Method
   method_eduroam: Eduroam
   method_official: Official
-  method_smtp: Email Login(SMTP)
+  method_smtp: Email Login
   not_recommended: Not recommended
   error:
     credential: Username or password is wrong. Please enter again.

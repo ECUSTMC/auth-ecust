@@ -1,7 +1,7 @@
 <form action="/auth/ecust/login" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="{{ trans('AuthEcust::auth.ecust.username') }}" name="identification" required>
+    <div class="input-group mb-1">
+        <input type="text" class="form-control" id="identificationInput" placeholder="{{ trans('AuthEcust::auth.ecust.username_official') }}" name="identification" required>
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-user-graduate"></span>
@@ -9,14 +9,14 @@
         </div>
     </div>
     <div class="input-group mb-1">
-        <input type="password" class="form-control" placeholder="{{ trans('AuthEcust::auth.ecust.password') }}" name="password" required>
+        <input type="password" class="form-control" id="passwordInput" placeholder="{{ trans('AuthEcust::auth.ecust.password_official') }}" name="password" required>
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-lock"></span>
             </div>
         </div>
     </div>
-    <small class="text-muted d-block mb-3">{{ trans('AuthEcust::auth.ecust.password_hint') }}</small>
+    <small class="text-muted d-block mb-3" id="passwordHint">{{ trans('AuthEcust::auth.ecust.password_hint_official') }}</small>
     <div class="form-group mb-3">
         <label style="font-size: 14px; color: #666;">{{ trans('AuthEcust::auth.ecust.method') }}</label>
         <div class="d-flex flex-wrap">
@@ -136,6 +136,40 @@
         captchaDiv.appendChild(outerDiv);
         captchaDiv.appendChild(apiScript);
     }
+    // 根据认证方式切换输入框提示
+    var idInput = document.getElementById('identificationInput');
+    var pwInput = document.getElementById('passwordInput');
+    var pwHint = document.getElementById('passwordHint');
+    var radios = document.querySelectorAll('input[name="auth_method"]');
+    var hints = {
+        official: {
+            id: '{{ trans('AuthEcust::auth.ecust.username_official') }}',
+            pw: '{{ trans('AuthEcust::auth.ecust.password_official') }}',
+            hint: '{{ trans('AuthEcust::auth.ecust.password_hint_official') }}'
+        },
+        eduroam: {
+            id: '{{ trans('AuthEcust::auth.ecust.username_official') }}',
+            pw: '{{ trans('AuthEcust::auth.ecust.password_official') }}',
+            hint: '{{ trans('AuthEcust::auth.ecust.password_hint_official') }}'
+        },
+        smtp: {
+            id: '{{ trans('AuthEcust::auth.ecust.username_smtp') }}',
+            pw: '{{ trans('AuthEcust::auth.ecust.password_smtp') }}',
+            hint: '{{ trans('AuthEcust::auth.ecust.password_hint_smtp') }}'
+        }
+    };
+    function updateHints(method) {
+        var h = hints[method] || hints.official;
+        idInput.placeholder = h.id;
+        pwInput.placeholder = h.pw;
+        pwHint.textContent = h.hint;
+    }
+    radios.forEach(function(r) {
+        r.addEventListener('change', function() { updateHints(this.value); });
+    });
+    // 初始状态
+    updateHints(document.querySelector('input[name="auth_method"]:checked').value);
+
     document.addEventListener("DOMContentLoaded", function() {
         if(blessing.extra.tooManyFails){
             if(blessing.extra.recaptcha){
