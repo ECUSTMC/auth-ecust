@@ -10,7 +10,8 @@ ecust:
   method: Authentication Method
   method_eduroam: Eduroam
   method_official: Official
-  method_smtp: Email Login
+  method_smtp: Email Login(SMTP)
+  not_recommended: Not recommended
   error:
     credential: Username or password is wrong. Please enter again.
     failure: Authentication failure. Retry later or contact admins.

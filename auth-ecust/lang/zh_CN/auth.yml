@@ -10,7 +10,8 @@ ecust:
   method: 认证方式
   method_eduroam: Eduroam
   method_official: 官方认证
-  method_smtp: 邮箱登录
+  method_smtp: 邮箱SMTP
+  not_recommended: 不推荐
   error:
     credential: 用户名或密码错误，请重新输入。
     failure: 认证失败，请稍后重试或联系管理员。

@@ -20,16 +20,16 @@
         <label style="font-size: 14px; color: #666;">{{ trans('AuthEcust::auth.ecust.method') }}</label>
         <div class="d-flex flex-wrap">
             <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="authEduroam" name="auth_method" value="eduroam" class="custom-control-input" checked>
-                <label class="custom-control-label" for="authEduroam">{{ trans('AuthEcust::auth.ecust.method_eduroam') }}</label>
-            </div>
-            <div class="custom-control custom-radio mr-3">
-                <input type="radio" id="authOfficial" name="auth_method" value="official" class="custom-control-input">
+                <input type="radio" id="authOfficial" name="auth_method" value="official" class="custom-control-input" checked>
                 <label class="custom-control-label" for="authOfficial">{{ trans('AuthEcust::auth.ecust.method_official') }}</label>
             </div>
-            <div class="custom-control custom-radio">
+            <div class="custom-control custom-radio mr-3">
                 <input type="radio" id="authSmtp" name="auth_method" value="smtp" class="custom-control-input">
                 <label class="custom-control-label" for="authSmtp">{{ trans('AuthEcust::auth.ecust.method_smtp') }}</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="authEduroam" name="auth_method" value="eduroam" class="custom-control-input">
+                <label class="custom-control-label" for="authEduroam">{{ trans('AuthEcust::auth.ecust.method_eduroam') }}（{{ trans('AuthEcust::auth.ecust.not_recommended') }}）</label>
             </div>
         </div>
     </div>

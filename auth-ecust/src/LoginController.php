@@ -64,7 +64,7 @@ class LoginController extends Controller
         ]);
         $identification = $data['identification'];
         $password = $data['password'];
-        $authMethod = $request->input('auth_method', 'eduroam');
+        $authMethod = $request->input('auth_method', 'official');
 
         $can = $filter->apply('can_login', null, [$identification, $password]);
         if ($can instanceof Rejection) {
