@@ -1,27 +1,44 @@
-# ECUSTMC 统一身份认证
+# auth-ecust
 
-Blessing Skin Server 插件，支持华东理工大学三种认证方式。
+华东理工大学统一身份认证插件，支持三种登录方式。
 
-## 快速开始
+## 安装
 
-1. 把 `auth-ecust` 文件夹放到 `plugins/` 目录
-2. 后台 → 插件管理 → 启用「ECUST 统一身份认证」
-3. 登录页出现「通过 ECUST 统一身份认证登录」按钮，点击进入
+把本仓库克隆到 Blessing Skin 的 `plugins/auth-ecust` 目录，后台启用即可。
 
-## 三种认证方式
+```bash
+cd plugins
+git clone <仓库地址> auth-ecust
+```
 
-| 方式 | 说明 | 输入 |
-|------|------|------|
-| Eduroam | eduroam 服务器验证 | 学号/工号 |
-| 官方认证 | AnyShare 网盘 API（RSA 加密） | 学号/工号 |
-| 邮箱登录 | 企业邮箱 SMTP 验证 | 完整邮箱 |
+## 认证方式
 
-## 项目结构
+| 方式 | 说明 | 输入格式 |
+|------|------|----------|
+| **官方认证**（默认） | AnyShare 网盘 API，RSA 加密密码 | 学号/工号 |
+| **邮箱登录** | 企业邮箱 SMTP 验证 | 完整邮箱 |
+| **Eduroam**（不推荐） | eduroam 服务器验证 | 学号/工号 |
+
+## 邮箱规则
+
+- **5位工号** → `@ecust.edu.cn`（教职工）
+- **其他学号** → `@mail.ecust.edu.cn`（学生）
+
+## 依赖
+
+- Blessing Skin Server >= 6
+- PHPMailer（Blessing Skin 自带）
+
+## 文件结构
 
 ```
-├── auth-ecust/          # 插件（用这个）
-├── auth-eduroam/        # 参考的原始 eduroam 插件
-├── ecust-auth/          # 官方认证 API 参考实现
-├── archive/             # 旧版手动集成文件（已废弃）
-└── README.md
+├── bootstrap.php           # 插件入口
+├── package.json            # 插件元信息
+├── public_key.pem          # RSA 公钥
+├── src/
+│   ├── LoginController.php # 登录控制器
+│   ├── EcustAuth.php       # 官方认证服务
+│   └── Configuration.php   # 后台配置页
+├── views/                  # Twig 模板
+└── lang/                   # 语言包
 ```
