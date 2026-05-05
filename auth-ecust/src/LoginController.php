@@ -15,6 +15,7 @@ use Blessing\Filter;
 use Vectorface\Whip\Whip;
 use App\Rules\Captcha;
 use Session;
+use Illuminate\Support\Facades\Hash;
 
 // 引入 PHPMailer
 require_once base_path('vendor/phpmailer/phpmailer/src/PHPMailer.php');
