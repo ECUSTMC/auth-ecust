@@ -10,6 +10,7 @@ ecust:
   password_official: Unified ID Password
   password_smtp: Email Password / Auth Code
   password_hint_official: Enter your school unified identity password
+  password_hint_official_only: Enter your school unified identity password (Not available for alumni)
   password_hint_smtp: Enter your email password, or authorization code if set
   method: Authentication Method
   method_eduroam: Eduroam
