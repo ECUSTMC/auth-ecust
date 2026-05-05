@@ -216,7 +216,6 @@ class LoginController extends Controller
             $user->verified = true;
             $user->save();
             Auth::login($user, true);
-            $dispatcher->dispatch('auth.registration.completed', [$user]);
         }
 
         $dispatcher->dispatch('auth.login.ready', [$user]);
