@@ -6,7 +6,8 @@ ecust:
   back: Login with :identification
   message: Please log in with your ECUST unified identity account
   username: Student/Employee ID/Email
-  password: Password
+  password: Unified ID Password / Email Password
+  password_hint: Use unified ID password for Official/Eduroam, email password or auth code for Email Login
   method: Authentication Method
   method_eduroam: Eduroam
   method_official: Official

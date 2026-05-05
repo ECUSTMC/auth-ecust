@@ -6,7 +6,8 @@ ecust:
   back: 通过 :identification 登录
   message: 请使用您的华东理工大学统一身份认证账号登录
   username: 学号/工号/邮箱
-  password: 密码
+  password: 统一身份认证密码 / 邮箱密码
+  password_hint: 官方认证/Eduroam 用统一身份认证密码，邮箱登录用邮箱密码或授权码
   method: 认证方式
   method_eduroam: Eduroam
   method_official: 官方认证

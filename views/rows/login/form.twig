@@ -8,7 +8,7 @@
             </div>
         </div>
     </div>
-    <div class="input-group mb-3">
+    <div class="input-group mb-1">
         <input type="password" class="form-control" placeholder="{{ trans('AuthEcust::auth.ecust.password') }}" name="password" required>
         <div class="input-group-append">
             <div class="input-group-text">
@@ -16,6 +16,7 @@
             </div>
         </div>
     </div>
+    <small class="text-muted d-block mb-3">{{ trans('AuthEcust::auth.ecust.password_hint') }}</small>
     <div class="form-group mb-3">
         <label style="font-size: 14px; color: #666;">{{ trans('AuthEcust::auth.ecust.method') }}</label>
         <div class="d-flex flex-wrap">
