@@ -2,7 +2,7 @@ title: 其它登录方式
 
 ecust:
   name: ECUST 账号
-  login: 通过 ECUST 统一身份认证登录
+  login: 通过 统一身份认证 登录
   back: 通过 :identification 登录
   message: 请使用您的华东理工大学统一身份认证账号登录
   username: 学号/工号/邮箱
