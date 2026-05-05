@@ -1,0 +1,20 @@
+{
+  "name": "auth-ecust",
+  "title": "AuthEcust::general.title",
+  "version": "1.0.0",
+  "description": "AuthEcust::general.description",
+  "author": "",
+  "url": "",
+  "namespace": "AuthEcust",
+  "require": {
+    "blessing-skin-server": "^6"
+  },
+  "enchants": {
+    "config": "Configuration",
+    "icon": {
+      "fa": "university",
+      "faType": "fas",
+      "bg": "primary"
+    }
+  }
+}

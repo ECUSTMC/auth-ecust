@@ -1,0 +1,23 @@
+title: Log In With
+
+ecust:
+  name: ECUST Account
+  login: Login with ECUST Unified Authentication
+  back: Login with :identification
+  message: Please log in with your ECUST unified identity account
+  username: Student/Employee ID/Email
+  password: Password
+  method: Authentication Method
+  method_eduroam: Eduroam
+  method_official: Official
+  method_smtp: Email Login
+  error:
+    credential: Username or password is wrong. Please enter again.
+    failure: Authentication failure. Retry later or contact admins.
+    illegal: Illegal action. Retry later or contact admins.
+    timeout: Authentication timeout. Retry later or contact admins.
+    unknown: Unknown error. Retry later or contact admins.
+    server: Authentication server connection failed. Retry later or contact admins.
+    email_format: Please enter a valid email format.
+    email_domain: Only ECUST email allowed (@ecust.edu.cn / @mail.ecust.edu.cn / @alumni.ecust.edu.cn).
+    smtp_failed: SMTP authentication failed. Please check username and password. Use authorization code if set.

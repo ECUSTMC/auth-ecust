@@ -1,0 +1,29 @@
+{% extends 'admin.base' %}
+
+{% block title %}{{ trans('AuthEcust::general.title') }}{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card card-info">
+        <div class="card-header">
+          <h3 class="card-title">{{ trans('AuthEcust::general.title') }}</h3>
+        </div>
+        <div class="card-body">
+          <p>{{ trans('AuthEcust::general.description') }}</p>
+          <hr>
+          <h5>认证方式</h5>
+          <ul>
+            <li><b>Eduroam</b> — 通过 eduroam 服务器验证（学号/工号）</li>
+            <li><b>官方认证</b> — 通过 AnyShare 网盘 API 验证（RSA 加密）</li>
+            <li><b>邮箱登录</b> — 通过学校企业邮箱 SMTP 验证</li>
+          </ul>
+          <hr>
+          <h5>邮箱规则</h5>
+          <p>5位工号 → <code>@ecust.edu.cn</code>（教职工）</p>
+          <p>其他学号 → <code>@mail.ecust.edu.cn</code>（学生）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
