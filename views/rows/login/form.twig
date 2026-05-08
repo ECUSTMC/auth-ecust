@@ -173,8 +173,10 @@
     radios.forEach(function(r) {
         r.addEventListener('change', function() { updateHints(this.value); });
     });
-    // 初始状态
-    updateHints(document.querySelector('input[name="auth_method"]:checked').value);
+    var firstChecked = document.querySelector('input[name="auth_method"]:checked');
+    if (firstChecked) {
+        updateHints(firstChecked.value);
+    }
 
     document.addEventListener("DOMContentLoaded", function() {
         if(blessing.extra.tooManyFails){

@@ -10,3 +10,4 @@ digit_employee: '-digit employee ID → '
 staff: ' (Staff)'
 other_student: Other student ID →
 student: ' (Student)'
+saved: Configuration saved

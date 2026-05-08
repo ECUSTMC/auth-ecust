@@ -21,7 +21,7 @@ class Configuration
                 'auth_ecust_eduroam_enabled' => $request->has('eduroam_enabled'),
             ]);
 
-            return json(trans('admin.options.updated'), 0);
+            return json(trans('AuthEcust::config.saved'), 0);
         }
 
         return view('AuthEcust::config', [
