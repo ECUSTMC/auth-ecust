@@ -42,3 +42,7 @@ git clone <仓库地址> auth-ecust
 ├── views/                  # Twig 模板
 └── lang/                   # 语言包
 ```
+
+## 许可证
+
+本项目基于 [MIT License](LICENSE) 开源。
