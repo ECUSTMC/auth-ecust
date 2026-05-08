@@ -56,7 +56,7 @@
             formData.append(cb.name, '1');
           }
         });
-        blessing.fetch.post(window.location.href, formData).then(function(res) {
+        blessing.fetch.post(window.location.pathname, formData).then(function(res) {
           if (res.code === 0) {
             blessing.notify.toast(res.message, 'success');
           }
