@@ -12,18 +12,56 @@
         <div class="card-body">
           <p>{{ trans('AuthEcust::general.description') }}</p>
           <hr>
-          <h5>认证方式</h5>
-          <ul>
-            <li><b>Eduroam</b> — 通过 eduroam 服务器验证（学号/工号）</li>
-            <li><b>官方认证</b> — 通过 AnyShare 网盘 API 验证（RSA 加密）</li>
-            <li><b>邮箱登录</b> — 通过学校企业邮箱 SMTP 验证</li>
-          </ul>
+          <h5>{{ trans('AuthEcust::config.channel_control') }}</h5>
+          <form id="channel-form">
+            <div class="form-group">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="switch-official" name="official_enabled" {{ official_enabled ? 'checked' : '' }}>
+                <label class="custom-control-label" for="switch-official">{{ trans('AuthEcust::config.official') }}</label>
+              </div>
+              <small class="text-muted">{{ trans('AuthEcust::config.official_desc') }}</small>
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="switch-smtp" name="smtp_enabled" {{ smtp_enabled ? 'checked' : '' }}>
+                <label class="custom-control-label" for="switch-smtp">{{ trans('AuthEcust::config.smtp') }}</label>
+              </div>
+              <small class="text-muted">{{ trans('AuthEcust::config.smtp_desc') }}</small>
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="switch-eduroam" name="eduroam_enabled" {{ eduroam_enabled ? 'checked' : '' }}>
+                <label class="custom-control-label" for="switch-eduroam">{{ trans('AuthEcust::config.eduroam') }}</label>
+              </div>
+              <small class="text-muted">{{ trans('AuthEcust::config.eduroam_desc') }}</small>
+            </div>
+          </form>
           <hr>
-          <h5>邮箱规则</h5>
-          <p>5位工号 → <code>@ecust.edu.cn</code>（教职工）</p>
-          <p>其他学号 → <code>@mail.ecust.edu.cn</code>（学生）</p>
+          <h5>{{ trans('AuthEcust::config.email_rules') }}</h5>
+          <p>5{{ trans('AuthEcust::config.digit_employee') }} <code>@ecust.edu.cn</code>{{ trans('AuthEcust::config.staff') }}</p>
+          <p>{{ trans('AuthEcust::config.other_student') }} <code>@mail.ecust.edu.cn</code>{{ trans('AuthEcust::config.student') }}</p>
         </div>
       </div>
     </div>
   </div>
+{% endblock %}
+
+{% block before_foot %}
+  <script>
+    document.querySelectorAll('#channel-form input[type=checkbox]').forEach(function(el) {
+      el.addEventListener('change', function() {
+        var formData = new FormData();
+        document.querySelectorAll('#channel-form input[type=checkbox]').forEach(function(cb) {
+          if (cb.checked) {
+            formData.append(cb.name, '1');
+          }
+        });
+        blessing.fetch.post(window.location.href, formData).then(function(res) {
+          if (res.code === 0) {
+            blessing.notify.toast(res.message, 'success');
+          }
+        });
+      });
+    });
+  </script>
 {% endblock %}

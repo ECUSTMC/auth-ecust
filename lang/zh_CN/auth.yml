@@ -27,3 +27,4 @@ ecust:
     email_format: 请输入正确的邮箱格式。
     email_domain: 仅限本校邮箱登录（@ecust.edu.cn / @mail.ecust.edu.cn / @alumni.ecust.edu.cn）。
     smtp_failed: SMTP 验证失败，请检查用户名和密码。如有设置邮箱授权码，请使用授权码！
+    channel_disabled: 该认证渠道已被管理员禁用。

@@ -27,3 +27,4 @@ ecust:
     email_format: Please enter a valid email format.
     email_domain: Only ECUST email allowed (@ecust.edu.cn / @mail.ecust.edu.cn / @alumni.ecust.edu.cn).
     smtp_failed: SMTP authentication failed. Please check username and password. Use authorization code if set.
+    channel_disabled: This authentication channel has been disabled by the administrator.

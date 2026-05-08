@@ -49,6 +49,9 @@ class LoginController extends Controller
                 'tooManyFails' => cache(sha1('login_fails_' . $ip)) > 3,
                 'recaptcha' => option('recaptcha_sitekey'),
                 'invisible' => (bool) option('recaptcha_invisible'),
+                'official_enabled' => (bool) option('auth_ecust_official_enabled', true),
+                'smtp_enabled' => (bool) option('auth_ecust_smtp_enabled', true),
+                'eduroam_enabled' => (bool) option('auth_ecust_eduroam_enabled', true),
             ],
         ]);
     }
@@ -89,10 +92,19 @@ class LoginController extends Controller
         // 根据认证方式分发
         switch ($authMethod) {
             case 'official':
+                if (!(bool) option('auth_ecust_official_enabled', true)) {
+                    return json(trans('AuthEcust::auth.ecust.error.channel_disabled'), 1);
+                }
                 return $this->handleOfficial($request, $identification, $password, $dispatcher, $ip, $loginFailsCacheKey, $loginFails);
             case 'smtp':
+                if (!(bool) option('auth_ecust_smtp_enabled', true)) {
+                    return json(trans('AuthEcust::auth.ecust.error.channel_disabled'), 1);
+                }
                 return $this->handleSmtp($request, $identification, $password, $dispatcher, $ip, $loginFailsCacheKey, $loginFails);
             default:
+                if (!(bool) option('auth_ecust_eduroam_enabled', true)) {
+                    return json(trans('AuthEcust::auth.ecust.error.channel_disabled'), 1);
+                }
                 return $this->handleEduroam($request, $identification, $password, $dispatcher, $ip, $loginFailsCacheKey, $loginFails);
         }
     }

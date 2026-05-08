@@ -1,0 +1,12 @@
+channel_control: 认证渠道开关
+official: 官方认证
+official_desc: 通过 AnyShare 网盘 API 验证（RSA 加密）
+smtp: 邮箱登录
+smtp_desc: 通过学校企业邮箱 SMTP 验证
+eduroam: Eduroam
+eduroam_desc: 通过 eduroam 服务器验证（不推荐）
+email_rules: 邮箱规则
+digit_employee: 位工号 →
+staff: （教职工）
+other_student: 其他学号 →
+student: （学生）

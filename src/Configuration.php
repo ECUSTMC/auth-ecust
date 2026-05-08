@@ -2,10 +2,32 @@
 
 namespace AuthEcust;
 
+use Illuminate\Http\Request;
+
 class Configuration
 {
-    public function render()
+    public function render(Request $request)
     {
-        return view('AuthEcust::config');
+        if ($request->isMethod('post')) {
+            $data = $request->validate([
+                'official_enabled' => 'nullable|boolean',
+                'smtp_enabled' => 'nullable|boolean',
+                'eduroam_enabled' => 'nullable|boolean',
+            ]);
+
+            option([
+                'auth_ecust_official_enabled' => $request->has('official_enabled'),
+                'auth_ecust_smtp_enabled' => $request->has('smtp_enabled'),
+                'auth_ecust_eduroam_enabled' => $request->has('eduroam_enabled'),
+            ]);
+
+            return json(trans('admin.options.updated'), 0);
+        }
+
+        return view('AuthEcust::config', [
+            'official_enabled' => (bool) option('auth_ecust_official_enabled', true),
+            'smtp_enabled' => (bool) option('auth_ecust_smtp_enabled', true),
+            'eduroam_enabled' => (bool) option('auth_ecust_eduroam_enabled', true),
+        ]);
     }
 }

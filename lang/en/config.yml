@@ -1,0 +1,12 @@
+channel_control: Authentication Channel Control
+official: Official
+official_desc: Verify via AnyShare API (RSA encrypted)
+smtp: Email Login
+smtp_desc: Verify via enterprise email SMTP
+eduroam: Eduroam
+eduroam_desc: Verify via eduroam server (Not recommended)
+email_rules: Email Rules
+digit_employee: '-digit employee ID → '
+staff: ' (Staff)'
+other_student: Other student ID →
+student: ' (Student)'
