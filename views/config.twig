@@ -58,7 +58,10 @@
         });
         blessing.fetch.post(window.location.pathname, formData).then(function(res) {
           if (res.code === 0) {
-            blessing.notify.toast(res.message, 'success');
+            blessing.notify.showModal({
+              mode: 'alert',
+              text: res.message,
+            });
           }
         });
       });
