@@ -5,6 +5,9 @@ smtp: 邮箱登录
 smtp_desc: 通过学校企业邮箱 SMTP 验证
 eduroam: Eduroam
 eduroam_desc: 通过 eduroam 服务器验证（不推荐）
+proxy_settings: 代理设置
+http_proxy: HTTP 代理
+http_proxy_desc: 用于访问 pan.ecust.edu.cn 的 HTTP 代理地址，留空则不使用代理。支持 HTTP 和 SOCKS5 代理（如 http://127.0.0.1:7890 或 socks5://127.0.0.1:1080）
 email_rules: 邮箱规则
 digit_employee: 位工号 →
 staff: （教职工）

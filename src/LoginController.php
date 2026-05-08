@@ -141,7 +141,8 @@ class LoginController extends Controller
         $emailForDB = $this->getEmailForDatabase($identification);
 
         try {
-            $auth = new EcustAuth();
+            $proxy = option('auth_ecust_http_proxy', '') ?: null;
+            $auth = new EcustAuth(null, $proxy);
             $result = $auth->verifyUser($identification, $password);
 
             if ($result['valid']) {

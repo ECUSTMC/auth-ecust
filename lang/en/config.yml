@@ -5,6 +5,9 @@ smtp: Email Login
 smtp_desc: Verify via enterprise email SMTP
 eduroam: Eduroam
 eduroam_desc: Verify via eduroam server (Not recommended)
+proxy_settings: Proxy Settings
+http_proxy: HTTP Proxy
+http_proxy_desc: HTTP proxy address for accessing pan.ecust.edu.cn. Leave empty to disable. Supports HTTP and SOCKS5 proxies (e.g. http://127.0.0.1:7890 or socks5://127.0.0.1:1080)
 email_rules: Email Rules
 digit_employee: '-digit employee ID → '
 staff: ' (Staff)'

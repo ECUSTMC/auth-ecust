@@ -37,6 +37,15 @@
             </div>
           </form>
           <hr>
+          <h5>{{ trans('AuthEcust::config.proxy_settings') }}</h5>
+          <form id="proxy-form">
+            <div class="form-group">
+              <label for="http-proxy">{{ trans('AuthEcust::config.http_proxy') }}</label>
+              <input type="text" class="form-control" id="http-proxy" name="http_proxy" value="{{ http_proxy }}" placeholder="http://127.0.0.1:7890">
+              <small class="text-muted">{{ trans('AuthEcust::config.http_proxy_desc') }}</small>
+            </div>
+          </form>
+          <hr>
           <h5>{{ trans('AuthEcust::config.email_rules') }}</h5>
           <p>5{{ trans('AuthEcust::config.digit_employee') }} <code>@ecust.edu.cn</code>{{ trans('AuthEcust::config.staff') }}</p>
           <p>{{ trans('AuthEcust::config.other_student') }} <code>@mail.ecust.edu.cn</code>{{ trans('AuthEcust::config.student') }}</p>
@@ -64,6 +73,24 @@
             });
           }
         });
+      });
+    });
+
+    document.getElementById('http-proxy').addEventListener('change', function() {
+      var formData = new FormData();
+      document.querySelectorAll('#channel-form input[type=checkbox]').forEach(function(cb) {
+        if (cb.checked) {
+          formData.append(cb.name, '1');
+        }
+      });
+      formData.append('http_proxy', this.value);
+      blessing.fetch.post(window.location.pathname, formData).then(function(res) {
+        if (res.code === 0) {
+          blessing.notify.showModal({
+            mode: 'alert',
+            text: res.message,
+          });
+        }
       });
     });
   </script>

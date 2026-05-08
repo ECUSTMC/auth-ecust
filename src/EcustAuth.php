@@ -10,10 +10,12 @@ class EcustAuth
 {
     private $baseUrl = 'https://pan.ecust.edu.cn/api/v1';
     private $publicKeyPath;
+    private $proxy;
 
-    public function __construct($publicKeyPath = null)
+    public function __construct($publicKeyPath = null, $proxy = null)
     {
         $this->publicKeyPath = $publicKeyPath ?: __DIR__ . '/../public_key.pem';
+        $this->proxy = $proxy;
     }
 
     /**
@@ -125,7 +127,7 @@ class EcustAuth
     private function post($url, $data)
     {
         $ch = curl_init();
-        curl_setopt_array($ch, [
+        $options = [
             CURLOPT_URL => $url,
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => json_encode($data),
@@ -136,7 +138,13 @@ class EcustAuth
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_TIMEOUT => 30
-        ]);
+        ];
+
+        if ($this->proxy) {
+            $options[CURLOPT_PROXY] = $this->proxy;
+        }
+
+        curl_setopt_array($ch, $options);
 
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
