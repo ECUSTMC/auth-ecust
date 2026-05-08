@@ -11,6 +11,7 @@ ecust:
   password_smtp: 邮箱密码 / 授权码
   password_hint_official: 请输入学校统一身份认证密码
   password_hint_official_only: 请输入学校统一身份认证密码（离校师生不可用）
+  password_hint_eduroam: 请输入学校统一身份认证密码（密码将传输至中科大 eduroam 接口进行验证，因此不推荐，建议使用邮箱验证）
   password_hint_smtp: 请输入邮箱密码，如设置过授权码请使用授权码
   method: 认证方式
   method_eduroam: Eduroam
